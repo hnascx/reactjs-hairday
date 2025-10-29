@@ -1,10 +1,13 @@
-import { Button } from "./components/ui/button"
+import { Schedules } from "./components/layout/schedules"
+import { Sidebar } from "./components/layout/sidebar"
 
 export function App() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-black gap-4">
-      <h1 className="text-white text-4xl">hairday</h1>
-      <Button>Click me</Button>
-    </div>
+    <section className="bg-gray-900 text-gray-100 text-base">
+      <div className="grid grid-cols-[1fr_2fr] min-h-screen max-w-6xl mx-auto">
+        <Sidebar />
+        <Schedules />
+      </div>
+    </section>
   )
 }
