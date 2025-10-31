@@ -9,19 +9,18 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function DatePicker() {
+export function DatePickerSchedule() {
   const [open, setOpen] = React.useState(false)
   const [date, setDate] = React.useState<Date | undefined>(undefined)
 
   return (
     <div className="flex flex-col gap-3">
-      <span className="text-title-md font-bold text-gray-200">Data</span>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             id="date"
             variant="datePickerButton"
-            size="md"
+            size="sm"
             className="flex items-center justify-between"
           >
             <div className="flex items-center gap-2">

@@ -18,6 +18,7 @@ const buttonVariants = cva(
       },
       size: {
         hourButton: "h-9.5 rounded-md px-4 py-2 has-[>svg]:px-3 w-19.25",
+        sm: "h-12 w-41 rounded-lg px-6 has-[>svg]:px-4",
         md: "h-12 w-83 rounded-lg px-6 has-[>svg]:px-4",
         lg: "h-14 w-83 rounded-lg px-6 has-[>svg]:px-4",
         icon: "size-9",
