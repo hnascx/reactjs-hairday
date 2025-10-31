@@ -15,9 +15,12 @@ const buttonVariants = cva(
           "bg-gray-600 text-gray-200 hover:bg-gray-600/90 border border-gray-500 focus:text-yellow focus:border-yellow disabled:bg-transparent disabled:text-gray-500 disabled:border-gray-600",
         bookClientButton:
           "bg-yellow text-gray-900 font-bold uppercase flex items-center justify-center border-transparent disabled:bg-yellow/25 disabled:border-transparent hover:border-yellow-light hover:border-2 transition-all duration-200",
+        deleteButton:
+          "text-yellow hover:text-yellow-dark transition-colors duration-200",
       },
       size: {
         hourButton: "h-9.5 rounded-md px-4 py-2 has-[>svg]:px-3 w-19.25",
+        deleteButton: "h-0 w-0 rounded-md px-4 py-2 has-[>svg]:px-2",
         sm: "h-12 w-41 rounded-lg px-6 has-[>svg]:px-4",
         md: "h-12 w-83 rounded-lg px-6 has-[>svg]:px-4",
         lg: "h-14 w-83 rounded-lg px-6 has-[>svg]:px-4",
