@@ -15,6 +15,7 @@ export function DatePicker() {
 
   return (
     <div className="flex flex-col gap-3">
+      <span className="text-title-md font-bold text-gray-200">Data</span>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

@@ -1,4 +1,5 @@
 import { DatePicker } from "@/components/ui/date-picker"
+import { HourRange } from "@/components/ui/hour-range"
 
 export function Sidebar() {
   return (
@@ -13,9 +14,11 @@ export function Sidebar() {
             agendamento.
           </p>
         </section>
-        <section className="flex flex-col gap-2.5">
-          <span className="text-title-md font-bold">Data</span>
+        <section>
           <DatePicker />
+        </section>
+        <section>
+          <HourRange />
         </section>
       </div>
     </aside>
