@@ -5,19 +5,23 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-500 disabled:border-gray-600 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer",
   {
     variants: {
       variant: {
+        datePickerButton:
+          "bg-transparent hover:bg-transparent border border-gray-500 rounded-lg",
         hourButton:
-          "bg-gray-600 text-gray-200 hover:bg-gray-600/90 border border-gray-500 focus:text-yellow focus:border-yellow",
+          "bg-gray-600 text-gray-200 hover:bg-gray-600/90 border border-gray-500 focus:text-yellow focus:border-yellow disabled:bg-transparent disabled:text-gray-500 disabled:border-gray-600",
+        bookClientButton:
+          "bg-yellow text-gray-900 font-bold uppercase flex items-center justify-center border-transparent disabled:bg-yellow/25 disabled:border-transparent hover:border-yellow-light hover:border-2 transition-all duration-200",
       },
       size: {
-        hourButton: "h-9.5 px-4 py-2 has-[>svg]:px-3 w-19.25",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        hourButton: "h-9.5 rounded-md px-4 py-2 has-[>svg]:px-3 w-19.25",
+        md: "h-12 w-83 rounded-lg px-6 has-[>svg]:px-4",
+        lg: "h-14 w-83 rounded-lg px-6 has-[>svg]:px-4",
         icon: "size-9",
-        "icon-sm": "size-8",
+        "icon-md": "size-8",
         "icon-lg": "size-10",
       },
     },

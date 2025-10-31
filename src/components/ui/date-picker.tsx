@@ -19,12 +19,13 @@ export function DatePicker() {
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
             id="date"
-            className="w-83 h-12 justify-between font-normal border border-gray-500 rounded-lg"
+            variant="datePickerButton"
+            size="md"
+            className="flex items-center justify-between"
           >
             <div className="flex items-center gap-2">
-              <CalendarIcon className="size-4.25 text-yellow" />
+              <CalendarIcon className="-ml-1.5 size-4.25 text-yellow" />
               {date
                 ? date.toLocaleDateString("pt-BR", {
                     day: "2-digit",
@@ -33,7 +34,7 @@ export function DatePicker() {
                   })
                 : "Selecione a data"}
             </div>
-            <ChevronDownIcon />
+            <ChevronDownIcon className="-mr-1.75" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto overflow-hidden p-0" align="start">

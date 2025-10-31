@@ -1,11 +1,12 @@
 import { DatePicker } from "@/components/ui/date-picker"
 import { HourRange } from "@/components/ui/hour-range"
+import { ClientSection } from "@/components/ui/client-section"
 
 export function Sidebar() {
   return (
-    <aside className="bg-gray-700 rounded-xl px-19 py-22">
-      <div className="flex flex-col items-start justify-start gap-6">
-        <section className="flex flex-col gap-3">
+    <aside className="bg-gray-700 rounded-xl px-18 py-20">
+      <div className="flex flex-col items-start justify-start gap-5">
+        <section className="flex flex-col gap-2">
           <h1 className="text-title-lg font-bold flex flex-row items-start justify-start">
             Agende um atendimento
           </h1>
@@ -14,12 +15,9 @@ export function Sidebar() {
             agendamento.
           </p>
         </section>
-        <section>
-          <DatePicker />
-        </section>
-        <section>
-          <HourRange />
-        </section>
+        <DatePicker />
+        <HourRange />
+        <ClientSection />
       </div>
     </aside>
   )
