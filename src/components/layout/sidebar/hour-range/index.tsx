@@ -1,6 +1,27 @@
-import { Button } from "../../../ui/button"
+import { useSchedule } from "@/contexts/ScheduleContext";
+import { Button } from "../../../ui/button";
+
+const MORNING_HOURS = ["09:00", "10:00", "11:00", "12:00"];
+const AFTERNOON_HOURS = ["13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
+const NIGHT_HOURS = ["19:00", "20:00", "21:00"];
 
 export function HourRange() {
+  const {
+    selectedTime,
+    setSelectedTime,
+    selectedDate,
+    isTimeSlotAvailable,
+    errors,
+  } = useSchedule();
+
+  const handleTimeClick = (time: string) => {
+    if (isTimeSlotAvailable(time, selectedDate)) {
+      setSelectedTime(time === selectedTime ? undefined : time);
+    }
+  };
+
+  const isDisabled = (time: string) => !isTimeSlotAvailable(time, selectedDate);
+
   return (
     <section className="flex flex-col mt-2 gap-3">
       <span className="text-title-md font-bold text-gray-200">Horários</span>
@@ -8,31 +29,52 @@ export function HourRange() {
       <section className="flex flex-col gap-1.5">
         <span className="text-title-sm text-gray-300">Manhã</span>
         <div className="flex flex-wrap gap-2">
-          <Button>09:00</Button>
-          <Button>10:00</Button>
-          <Button disabled>11:00</Button>
-          <Button>12:00</Button>
+          {MORNING_HOURS.map((time) => (
+            <Button
+              key={time}
+              disabled={isDisabled(time)}
+              onClick={() => handleTimeClick(time)}
+            >
+              {time}
+            </Button>
+          ))}
         </div>
       </section>
+
       <section className="flex flex-col gap-1.5">
         <span className="text-title-sm text-gray-300">Tarde</span>
         <div className="flex flex-wrap gap-2">
-          <Button disabled>13:00</Button>
-          <Button disabled>14:00</Button>
-          <Button>15:00</Button>
-          <Button disabled>16:00</Button>
-          <Button disabled>17:00</Button>
-          <Button>18:00</Button>
+          {AFTERNOON_HOURS.map((time) => (
+            <Button
+              key={time}
+              disabled={isDisabled(time)}
+              onClick={() => handleTimeClick(time)}
+            >
+              {time}
+            </Button>
+          ))}
         </div>
       </section>
+
       <section className="flex flex-col gap-1.5">
         <span className="text-title-sm text-gray-300">Noite</span>
         <div className="flex flex-wrap gap-2">
-          <Button>19:00</Button>
-          <Button>20:00</Button>
-          <Button disabled>21:00</Button>
+          {NIGHT_HOURS.map((time) => (
+            <Button
+              key={time}
+              disabled={isDisabled(time)}
+              onClick={() => handleTimeClick(time)}
+            >
+              {time}
+            </Button>
+          ))}
         </div>
+        {errors.time && (
+          <span className="text-xs text-red-500">
+            Por favor, selecione um horário
+          </span>
+        )}
       </section>
     </section>
-  )
+  );
 }
