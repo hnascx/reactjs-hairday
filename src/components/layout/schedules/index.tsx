@@ -1,5 +1,5 @@
 import { DatePickerSchedule } from "./date-picker-schedule"
-import { ScheduleTables } from "./morning-table"
+import { ScheduleTables } from "./schedule-tables"
 
 export function Schedules() {
   return (

@@ -53,7 +53,7 @@ export function DatePicker() {
         </PopoverContent>
       </Popover>
       {errors.date && (
-        <span className="text-xs text-red-500">
+        <span className="-mt-1 text-xs text-red-500">
           Por favor, selecione uma data
         </span>
       )}

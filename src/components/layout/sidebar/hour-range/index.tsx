@@ -70,7 +70,7 @@ export function HourRange() {
           ))}
         </div>
         {errors.time && (
-          <span className="text-xs text-red-500">
+          <span className="mt-1 text-xs text-red-500">
             Por favor, selecione um horário
           </span>
         )}
