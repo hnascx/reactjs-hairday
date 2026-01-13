@@ -1,4 +1,5 @@
 import { useSchedule } from "@/contexts/ScheduleContext";
+import { cn } from "@/lib/utils";
 import { Button } from "../../../ui/button";
 
 const MORNING_HOURS = ["09:00", "10:00", "11:00", "12:00"];
@@ -34,6 +35,9 @@ export function HourRange() {
               key={time}
               disabled={isDisabled(time)}
               onClick={() => handleTimeClick(time)}
+              className={cn(
+                selectedTime === time && "border-yellow border text-yellow"
+              )}
             >
               {time}
             </Button>
@@ -49,6 +53,9 @@ export function HourRange() {
               key={time}
               disabled={isDisabled(time)}
               onClick={() => handleTimeClick(time)}
+              className={cn(
+                selectedTime === time && "border-yellow border text-yellow"
+              )}
             >
               {time}
             </Button>
@@ -64,6 +71,9 @@ export function HourRange() {
               key={time}
               disabled={isDisabled(time)}
               onClick={() => handleTimeClick(time)}
+              className={cn(
+                selectedTime === time && "border-yellow border text-yellow"
+              )}
             >
               {time}
             </Button>

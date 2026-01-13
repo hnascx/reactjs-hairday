@@ -38,3 +38,11 @@ body {
   --text-title-lg: 1.5rem;
   --text-title-lg--line-height: 0.75;
 }
+
+@layer utilities {
+  .time-display {
+    display: inline-block;
+    min-width: 3rem;
+    text-align: left;
+  }
+}

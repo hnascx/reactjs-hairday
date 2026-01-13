@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import type { Appointment } from "../types/schedule";
+import { normalizeDateToString } from "../lib/date-utils";
 
 interface ScheduleContextData {
   appointments: Appointment[];
   selectedDate: Date | undefined;
   selectedTime: string | undefined;
   clientName: string;
+  scheduleViewDate: Date | undefined;
   errors: {
     date: boolean;
     time: boolean;
@@ -14,6 +16,7 @@ interface ScheduleContextData {
   setSelectedDate: (date: Date | undefined) => void;
   setSelectedTime: (time: string | undefined) => void;
   setClientName: (name: string) => void;
+  setScheduleViewDate: (date: Date | undefined) => void;
   addAppointment: () => boolean;
   deleteAppointment: (id: string) => void;
   isTimeSlotAvailable: (time: string, date: Date | undefined) => boolean;
@@ -28,11 +31,20 @@ const STORAGE_KEY = "@hairday:appointments";
 
 export function ScheduleProvider({ children }: { children: React.ReactNode }) {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    () => new Date()
+  );
+
   const [selectedTime, setSelectedTime] = useState<string | undefined>(
     undefined
   );
+
   const [clientName, setClientName] = useState("");
+
+  const [scheduleViewDate, setScheduleViewDate] = useState<Date | undefined>(
+    () => new Date()
+  );
+
   const [errors, setErrors] = useState({
     date: false,
     time: false,
@@ -47,7 +59,9 @@ export function ScheduleProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (appointments.length > 0) {
+    if (appointments.length === 0) {
+      localStorage.removeItem(STORAGE_KEY);
+    } else {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(appointments));
     }
   }, [appointments]);
@@ -67,14 +81,14 @@ export function ScheduleProvider({ children }: { children: React.ReactNode }) {
   ): boolean => {
     if (!date) return true;
 
-    const dateString = date.toISOString().split("T")[0];
+    const dateString = normalizeDateToString(date);
     return !appointments.some(
       (apt) => apt.date === dateString && apt.time === time
     );
   };
 
   const clearForm = () => {
-    setSelectedDate(undefined);
+    setSelectedDate(new Date());
     setSelectedTime(undefined);
     setClientName("");
     setErrors({
@@ -100,23 +114,21 @@ export function ScheduleProvider({ children }: { children: React.ReactNode }) {
     const newAppointment: Appointment = {
       id: crypto.randomUUID(),
       clientName: clientName.trim(),
-      date: selectedDate!.toISOString().split("T")[0],
+      date: normalizeDateToString(selectedDate!),
       time: selectedTime!,
       period: getPeriodFromTime(selectedTime!),
     };
 
     setAppointments((prev) => [...prev, newAppointment]);
+
+    setScheduleViewDate(selectedDate);
+
     clearForm();
     return true;
   };
 
   const deleteAppointment = (id: string) => {
     setAppointments((prev) => prev.filter((apt) => apt.id !== id));
-
-    const updated = appointments.filter((apt) => apt.id !== id);
-    if (updated.length === 0) {
-      localStorage.removeItem(STORAGE_KEY);
-    }
   };
 
   return (
@@ -126,10 +138,12 @@ export function ScheduleProvider({ children }: { children: React.ReactNode }) {
         selectedDate,
         selectedTime,
         clientName,
+        scheduleViewDate,
         errors,
         setSelectedDate,
         setSelectedTime,
         setClientName,
+        setScheduleViewDate,
         addAppointment,
         deleteAppointment,
         isTimeSlotAvailable,

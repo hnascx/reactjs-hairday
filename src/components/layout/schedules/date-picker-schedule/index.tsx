@@ -1,17 +1,18 @@
-import { CalendarIcon, ChevronDownIcon } from "lucide-react"
+import { CalendarIcon, ChevronDownIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { useState } from "react"
+} from "@/components/ui/popover";
+import { useSchedule } from "@/contexts/ScheduleContext";
+import { useState } from "react";
 
 export function DatePickerSchedule() {
-  const [open, setOpen] = useState(false)
-  const [date, setDate] = useState<Date | undefined>(undefined)
+  const [open, setOpen] = useState(false);
+  const { scheduleViewDate, setScheduleViewDate } = useSchedule();
 
   return (
     <div className="flex flex-col gap-3">
@@ -25,8 +26,8 @@ export function DatePickerSchedule() {
           >
             <div className="flex items-center gap-2">
               <CalendarIcon className="-ml-1.5 size-4.25 text-yellow" />
-              {date
-                ? date.toLocaleDateString("pt-BR", {
+              {scheduleViewDate
+                ? scheduleViewDate.toLocaleDateString("pt-BR", {
                     day: "2-digit",
                     month: "2-digit",
                     year: "numeric",
@@ -39,18 +40,18 @@ export function DatePickerSchedule() {
         <PopoverContent className="w-auto overflow-hidden p-0" align="start">
           <Calendar
             mode="single"
-            selected={date}
-            defaultMonth={date || new Date()}
+            selected={scheduleViewDate}
+            defaultMonth={scheduleViewDate || new Date()}
             captionLayout="dropdown"
             fromYear={new Date().getFullYear()}
             toYear={new Date().getFullYear() + 4}
             onSelect={(date) => {
-              setDate(date)
-              setOpen(false)
+              setScheduleViewDate(date);
+              setOpen(false);
             }}
           />
         </PopoverContent>
       </Popover>
     </div>
-  )
+  );
 }

@@ -1,25 +1,35 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useSchedule } from "@/contexts/ScheduleContext";
+import { normalizeDateToString } from "@/lib/date-utils";
 import { CloudSun, MoonStar, Sunrise, Trash2 } from "lucide-react";
 import { useMemo } from "react";
 
 export function ScheduleTables() {
-  const { appointments, deleteAppointment } = useSchedule();
+  const { appointments, deleteAppointment, scheduleViewDate } = useSchedule();
 
   const groupedAppointments = useMemo(() => {
+    const filteredAppointments = scheduleViewDate
+      ? appointments.filter((apt) => {
+          const aptDate = apt.date;
+          const viewDate = normalizeDateToString(scheduleViewDate);
+          return aptDate === viewDate;
+        })
+      : appointments;
+
     return {
-      morning: appointments
+      morning: filteredAppointments
         .filter((apt) => apt.period === "morning")
         .sort((a, b) => a.time.localeCompare(b.time)),
-      afternoon: appointments
+      afternoon: filteredAppointments
         .filter((apt) => apt.period === "afternoon")
         .sort((a, b) => a.time.localeCompare(b.time)),
-      night: appointments
+      night: filteredAppointments
         .filter((apt) => apt.period === "night")
         .sort((a, b) => a.time.localeCompare(b.time)),
+      totalFiltered: filteredAppointments.length,
     };
-  }, [appointments]);
+  }, [appointments, scheduleViewDate]);
 
   return (
     <div className="flex flex-col gap-3">
@@ -36,10 +46,10 @@ export function ScheduleTables() {
             {groupedAppointments.morning.map((appointment) => (
               <div
                 key={appointment.id}
-                className="flex items-center justify-between px-6 py-1"
+                className="flex items-center justify-between px-6 py-1.5"
               >
                 <div className="flex items-center gap-6">
-                  <span className="text-title-md font-bold text-gray-200">
+                  <span className="text-title-md font-bold text-gray-200 time-display">
                     {appointment.time}
                   </span>
                   <span className="text-gray-200">
@@ -72,10 +82,10 @@ export function ScheduleTables() {
             {groupedAppointments.afternoon.map((appointment) => (
               <div
                 key={appointment.id}
-                className="flex items-center justify-between px-6 py-1"
+                className="flex items-center justify-between px-6 py-1.5"
               >
                 <div className="flex items-center gap-6">
-                  <span className="text-title-md font-bold text-gray-200">
+                  <span className="text-title-md font-bold text-gray-200 time-display">
                     {appointment.time}
                   </span>
                   <span className="text-gray-200">
@@ -108,10 +118,10 @@ export function ScheduleTables() {
             {groupedAppointments.night.map((appointment) => (
               <div
                 key={appointment.id}
-                className="flex items-center justify-between px-6 py-1"
+                className="flex items-center justify-between px-6 py-1.5"
               >
                 <div className="flex items-center gap-6">
-                  <span className="text-title-md font-bold text-gray-200">
+                  <span className="text-title-md font-bold text-gray-200 time-display">
                     {appointment.time}
                   </span>
                   <span className="text-gray-200">
@@ -131,7 +141,7 @@ export function ScheduleTables() {
         </Card>
       )}
 
-      {appointments.length === 0 && (
+      {groupedAppointments.totalFiltered === 0 && (
         <div className="flex items-center justify-center py-12">
           <p className="text-gray-400 text-sm">Nenhum agendamento encontrado</p>
         </div>
