@@ -24,7 +24,7 @@ export function HourRange() {
   const isDisabled = (time: string) => !isTimeSlotAvailable(time, selectedDate);
 
   return (
-    <section className="flex flex-col mt-2 gap-3">
+    <section className="flex flex-col mt-2 gap-3 w-full">
       <span className="text-title-md font-bold text-gray-200">Horários</span>
 
       <section className="flex flex-col gap-1.5">

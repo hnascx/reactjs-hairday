@@ -22,7 +22,7 @@ export function DatePicker() {
             id="date"
             variant="datePickerButton"
             size="md"
-            className="flex items-center justify-between"
+            className="flex items-center justify-between w-full"
           >
             <div className="flex items-center gap-2">
               <CalendarIcon className="-ml-1.5 size-4.25 text-yellow" />

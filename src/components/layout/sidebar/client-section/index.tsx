@@ -7,21 +7,17 @@ export function ClientSection() {
   const { clientName, setClientName, addAppointment, errors } = useSchedule();
 
   const handleSchedule = () => {
-    const success = addAppointment();
-    if (success) {
-      // Opcional: adicionar toast de sucesso aqui
-      console.log("Agendamento realizado com sucesso!");
-    }
+    addAppointment();
   };
 
   return (
-    <section className="flex flex-col mt-2 gap-2">
+    <section className="flex flex-col mt-2 gap-2 w-full">
       <span className="text-title-md font-bold text-gray-200">Cliente</span>
       <div className="relative">
         <SquareUserIcon className="size-4.5 text-yellow absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
         <Input
           placeholder="Nome do cliente"
-          className="pl-9"
+          className="pl-9 w-full"
           value={clientName}
           onChange={(e) => setClientName(e.target.value)}
         />
@@ -34,7 +30,7 @@ export function ClientSection() {
       <Button
         variant="bookClientButton"
         size="lg"
-        className="mt-4"
+        className="mt-4 w-full"
         onClick={handleSchedule}
       >
         Agendar

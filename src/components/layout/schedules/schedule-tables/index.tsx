@@ -35,7 +35,7 @@ export function ScheduleTables() {
     <div className="flex flex-col gap-3">
       {groupedAppointments.morning.length > 0 && (
         <Card className="border-gray-600">
-          <CardHeader className="flex flex-row items-center justify-between border-b border-gray-600 h-2">
+          <CardHeader className="flex flex-row items-center justify-between border-b border-gray-600 h-2 px-4 sm:px-6">
             <div className="flex items-center gap-3">
               <Sunrise className="w-5 h-5 text-yellow-500" />
               <span className="text-sm text-gray-300">Manhã</span>
@@ -46,13 +46,13 @@ export function ScheduleTables() {
             {groupedAppointments.morning.map((appointment) => (
               <div
                 key={appointment.id}
-                className="flex items-center justify-between px-6 py-1.5"
+                className="flex items-center justify-between px-4 sm:px-6 py-1.5 gap-2"
               >
-                <div className="flex items-center gap-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
                   <span className="text-title-md font-bold text-gray-200 time-display">
                     {appointment.time}
                   </span>
-                  <span className="text-gray-200">
+                  <span className="text-gray-200 text-sm sm:text-base truncate">
                     {appointment.clientName}
                   </span>
                 </div>
@@ -71,7 +71,7 @@ export function ScheduleTables() {
 
       {groupedAppointments.afternoon.length > 0 && (
         <Card className="border-gray-600">
-          <CardHeader className="flex flex-row items-center justify-between border-b border-gray-600 h-2">
+          <CardHeader className="flex flex-row items-center justify-between border-b border-gray-600 h-2 px-4 sm:px-6">
             <div className="flex items-center gap-3">
               <CloudSun className="w-5 h-5 text-yellow-500" />
               <span className="text-sm text-gray-300">Tarde</span>
@@ -82,13 +82,13 @@ export function ScheduleTables() {
             {groupedAppointments.afternoon.map((appointment) => (
               <div
                 key={appointment.id}
-                className="flex items-center justify-between px-6 py-1.5"
+                className="flex items-center justify-between px-4 sm:px-6 py-1.5 gap-2"
               >
-                <div className="flex items-center gap-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
                   <span className="text-title-md font-bold text-gray-200 time-display">
                     {appointment.time}
                   </span>
-                  <span className="text-gray-200">
+                  <span className="text-gray-200 text-sm sm:text-base truncate">
                     {appointment.clientName}
                   </span>
                 </div>
@@ -107,7 +107,7 @@ export function ScheduleTables() {
 
       {groupedAppointments.night.length > 0 && (
         <Card className="border-gray-600">
-          <CardHeader className="flex flex-row items-center justify-between border-b border-gray-600 h-2">
+          <CardHeader className="flex flex-row items-center justify-between border-b border-gray-600 h-2 px-4 sm:px-6">
             <div className="flex items-center gap-3">
               <MoonStar className="w-5 h-5 text-yellow-500" />
               <span className="text-sm text-gray-300">Noite</span>
@@ -118,13 +118,13 @@ export function ScheduleTables() {
             {groupedAppointments.night.map((appointment) => (
               <div
                 key={appointment.id}
-                className="flex items-center justify-between px-6 py-1.5"
+                className="flex items-center justify-between px-4 sm:px-6 py-1.5 gap-2"
               >
-                <div className="flex items-center gap-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
                   <span className="text-title-md font-bold text-gray-200 time-display">
                     {appointment.time}
                   </span>
-                  <span className="text-gray-200">
+                  <span className="text-gray-200 text-sm sm:text-base truncate">
                     {appointment.clientName}
                   </span>
                 </div>
@@ -142,7 +142,7 @@ export function ScheduleTables() {
       )}
 
       {groupedAppointments.totalFiltered === 0 && (
-        <div className="flex items-center justify-center py-12">
+        <div className="flex items-center justify-center py-6 sm:py-8 lg:py-12">
           <p className="text-gray-400 text-sm">Nenhum agendamento encontrado</p>
         </div>
       )}

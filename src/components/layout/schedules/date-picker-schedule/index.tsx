@@ -15,14 +15,14 @@ export function DatePickerSchedule() {
   const { scheduleViewDate, setScheduleViewDate } = useSchedule();
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 w-full sm:w-auto">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             id="date"
             variant="datePickerButton"
             size="sm"
-            className="flex items-center justify-between"
+            className="flex items-center justify-between min-w-full sm:min-w-0 sm:w-auto"
           >
             <div className="flex items-center gap-2">
               <CalendarIcon className="-ml-1.5 size-4.25 text-yellow" />
