@@ -1,12 +1,13 @@
 import { ClientSection } from "@/components/layout/sidebar/client-section";
 import { DatePicker } from "@/components/layout/sidebar/date-picker";
 import { HourRange } from "@/components/layout/sidebar/hour-range";
+import hairdayLogo from "@/styles/assets/hairday-logo.svg";
 
 export function Sidebar() {
   return (
     <aside className="relative flex flex-col items-center justify-center bg-gray-700 rounded-xl px-6 sm:px-12 lg:px-18 py-12 lg:py-22">
       <img
-        src="/src/styles/assets/hairday-logo.svg"
+        src={hairdayLogo}
         alt="Hair Day Logo"
         className="absolute -left-3 -top-3 z-50 pointer-events-none w-auto h-[40px] sm:h-[56px] max-w-[100px] sm:max-w-[139px] select-none bg-gray-600 rounded-br-xl px-3 sm:px-5"
         draggable={false}
