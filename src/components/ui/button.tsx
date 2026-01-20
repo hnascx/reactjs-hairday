@@ -17,6 +17,8 @@ const buttonVariants = cva(
           "bg-yellow text-gray-900 font-bold uppercase flex items-center justify-center border-transparent disabled:bg-yellow/25 disabled:border-transparent hover:border-yellow-light hover:border-2 transition-all duration-200",
         deleteButton:
           "text-yellow hover:text-yellow-dark transition-colors duration-200",
+        ghost:
+          "bg-transparent hover:bg-gray-600/50 text-gray-200 hover:text-gray-100",
       },
       size: {
         hourButton: "h-9.5 rounded-md px-4 py-2 has-[>svg]:px-3 w-19.25",
