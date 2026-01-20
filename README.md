@@ -1,98 +1,98 @@
 # Hair Day 💇
 
-Sistema de agendamento de cortes de cabelo desenvolvido com React, TypeScript e Tailwind CSS. Uma aplicação moderna e responsiva para gerenciar horários de atendimento.
+Haircut scheduling system developed with React, TypeScript and Tailwind CSS. A modern and responsive application for managing service schedules.
 
-## 📋 Sobre o Projeto
+## 📋 About the Project
 
-O Hair Day é uma aplicação web que permite agendar e gerenciar cortes de cabelo de forma simples e intuitiva. A aplicação oferece uma interface limpa e moderna, com suporte completo a dispositivos móveis e desktop.
+Hair Day is a web application that allows you to schedule and manage haircuts in a simple and intuitive way. The application offers a clean and modern interface, with full support for mobile and desktop devices.
 
-## ✨ Funcionalidades
+## ✨ Features
 
-- 📅 **Seleção de Data**: Escolha a data desejada através de um calendário interativo
-- ⏰ **Seleção de Horário**: Escolha entre horários disponíveis organizados por períodos (Manhã, Tarde, Noite)
-- 👤 **Cadastro de Cliente**: Informe o nome do cliente para o agendamento
-- 📊 **Visualização de Agenda**: Consulte todos os agendamentos organizados por data e período
-- 🗑️ **Exclusão de Agendamentos**: Remova agendamentos facilmente
-- 💾 **Persistência Local**: Os dados são salvos automaticamente no localStorage do navegador
-- 📱 **Design Responsivo**: Interface adaptável para diferentes tamanhos de tela
+- 📅 **Date Selection**: Choose the desired date through an interactive calendar
+- ⏰ **Time Selection**: Choose from available times organized by periods (Morning, Afternoon, Evening)
+- 👤 **Client Registration**: Enter the client's name for the appointment
+- 📊 **Schedule View**: View all appointments organized by date and period
+- 🗑️ **Appointment Deletion**: Easily remove appointments
+- 💾 **Local Persistence**: Data is automatically saved in the browser's localStorage
+- 📱 **Responsive Design**: Interface adaptable to different screen sizes
 
-## 🛠️ Tecnologias
+## 🛠️ Technologies
 
-- **React 19** - Biblioteca JavaScript para construção de interfaces
-- **TypeScript** - Superset do JavaScript com tipagem estática
-- **Vite** - Build tool e dev server extremamente rápido
-- **Tailwind CSS 4** - Framework CSS utility-first
-- **Radix UI** - Componentes acessíveis e não estilizados
-- **React Day Picker** - Componente de calendário
-- **date-fns** - Biblioteca para manipulação de datas
-- **Lucide React** - Ícones modernos e leves
-- **Class Variance Authority** - Gerenciamento de variantes de classes
+- **React 19** - JavaScript library for building interfaces
+- **TypeScript** - JavaScript superset with static typing
+- **Vite** - Extremely fast build tool and dev server
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Radix UI** - Accessible and unstyled components
+- **React Day Picker** - Calendar component
+- **date-fns** - Library for date manipulation
+- **Lucide React** - Modern and lightweight icons
+- **Class Variance Authority** - Class variant management
 
-## 🚀 Como Executar
+## 🚀 How to Run
 
-### Pré-requisitos
+### Prerequisites
 
-- Node.js (versão 18 ou superior)
-- pnpm (gerenciador de pacotes)
+- Node.js (version 18 or higher)
+- pnpm (package manager)
 
-### Instalação
+### Installation
 
-1. Clone o repositório:
+1. Clone the repository:
 ```bash
-git clone <url-do-repositorio>
+git clone <repository-url>
 cd hairday
 ```
 
-2. Instale as dependências:
+2. Install dependencies:
 ```bash
 pnpm install
 ```
 
-3. Execute o servidor de desenvolvimento:
+3. Run the development server:
 ```bash
 pnpm dev
 ```
 
-4. Acesse a aplicação em `http://localhost:5173`
+4. Access the application at `http://localhost:5173`
 
-### Scripts Disponíveis
+### Available Scripts
 
-- `pnpm dev` - Inicia o servidor de desenvolvimento
-- `pnpm build` - Cria a build de produção
-- `pnpm preview` - Visualiza a build de produção localmente
-- `pnpm lint` - Executa o linter para verificar problemas no código
+- `pnpm dev` - Starts the development server
+- `pnpm build` - Creates the production build
+- `pnpm preview` - Preview the production build locally
+- `pnpm lint` - Runs the linter to check for code issues
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 hairday/
 ├── src/
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── schedules/          # Componentes da seção de agendamentos
+│   │   │   ├── schedules/          # Scheduling section components
 │   │   │   │   ├── date-picker-schedule/
 │   │   │   │   └── schedule-tables/
-│   │   │   └── sidebar/            # Componentes da sidebar de agendamento
+│   │   │   └── sidebar/            # Scheduling sidebar components
 │   │   │       ├── client-section/
 │   │   │       ├── date-picker/
 │   │   │       └── hour-range/
-│   │   └── ui/                     # Componentes de UI reutilizáveis
+│   │   └── ui/                     # Reusable UI components
 │   │       ├── button.tsx
 │   │       ├── calendar.tsx
 │   │       ├── card.tsx
 │   │       ├── input.tsx
 │   │       └── popover.tsx
 │   ├── contexts/
-│   │   └── ScheduleContext.tsx     # Context API para gerenciamento de estado
+│   │   └── ScheduleContext.tsx     # Context API for state management
 │   ├── lib/
-│   │   └── utils.ts                # Funções utilitárias
+│   │   └── utils.ts                # Utility functions
 │   ├── styles/
 │   │   ├── assets/                 # Assets (logo, favicon)
-│   │   └── index.css               # Estilos globais e tema Tailwind
+│   │   └── index.css               # Global styles and Tailwind theme
 │   ├── types/
-│   │   └── schedule.ts             # Definições de tipos TypeScript
-│   ├── App.tsx                     # Componente principal
-│   └── main.tsx                    # Ponto de entrada da aplicação
+│   │   └── schedule.ts             # TypeScript type definitions
+│   ├── App.tsx                     # Main component
+│   └── main.tsx                    # Application entry point
 ├── index.html
 ├── package.json
 ├── vite.config.ts
@@ -101,15 +101,15 @@ hairday/
 
 ## 🎨 Design
 
-A aplicação utiliza um tema escuro com cores personalizadas:
-- **Background**: Tons de cinza escuro (#050505 a #232225)
-- **Destaque**: Amarelo dourado (#b8952e) para elementos interativos
-- **Tipografia**: Catamaran (Google Fonts)
+The application uses a dark theme with custom colors:
+- **Background**: Dark gray tones (#050505 to #232225)
+- **Accent**: Golden yellow (#b8952e) for interactive elements
+- **Typography**: Catamaran (Google Fonts)
 
-## 📝 Funcionalidades Técnicas
+## 📝 Technical Features
 
-- **Validação de Formulário**: Validação em tempo real dos campos obrigatórios
-- **Prevenção de Conflitos**: Sistema impede agendamentos duplicados no mesmo horário
-- **Organização por Períodos**: Agendamentos agrupados automaticamente por Manhã (09h-12h), Tarde (13h-18h) e Noite (19h-21h)
-- **Filtro por Data**: Visualize agendamentos de uma data específica
-- **Persistência de Dados**: Todos os agendamentos são salvos automaticamente no localStorage
+- **Form Validation**: Real-time validation of required fields
+- **Conflict Prevention**: System prevents duplicate appointments at the same time
+- **Period Organization**: Appointments automatically grouped by Morning (09h-12h), Afternoon (13h-18h) and Evening (19h-21h)
+- **Date Filter**: View appointments for a specific date
+- **Data Persistence**: All appointments are automatically saved to localStorage
